@@ -48,7 +48,6 @@ class App extends React.Component {
     return (
       <div className={'whats-container'}>
         <div>
-         
         {listaDeMsg}
         </div>
         <div>
@@ -58,7 +57,6 @@ class App extends React.Component {
 
           <button onClick={this.adicionaMsg}>Enviar</button>
         </div>
-      </div>
     );
   }
 }
