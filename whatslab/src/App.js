@@ -3,18 +3,40 @@ import React from 'react';
 import styled from "styled-components";
 
 const ContainerMensagens = styled.div`
-  height: 90vh;
-  border: 2px solid red;
+  height: 70vh;
+  width: 30vw;
+  border: 2px solid #5abeb1;
+  border-radius: 5px;
   padding: 5px;
+  margin: auto;
+  margin-top: 20px;
 `
+const ContainerInputs = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 31vw;
+`
+
 const InputUsuario = styled.input`
-  
+  border: none;
+  background-color: #f9eac3;
+  padding: 5px;
+  width: 26%;
+  height: 22px;
+  border-radius: 5px;
 `
 const InputMsg = styled.input`
-  
+  border: none;
+  background-color: #f9eac3;
+  width: 80%;
+  border-radius: 5px;
 `
 const BotaoEnviar = styled.button`
-  
+  border: none;
+  border-radius: 5px;
+  background-color: #f66800;
+  color: #ffffff;
 `
 
 class App extends React.Component {
@@ -68,13 +90,13 @@ class App extends React.Component {
         <ContainerMensagens>
         {listaDeMsg}
         </ContainerMensagens>
-        <div>
-          <input placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
+        <ContainerInputs>
+          <InputUsuario placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
 
-          <input placeholder='Mensagem' onChange={this.onChangeInputMsg} value={this.valorInputMsg} />
+          <InputMsg placeholder='Mensagem' onChange={this.onChangeInputMsg} value={this.state.valorInputMsg} />
 
-          <button onClick={this.adicionaMsg}>Enviar</button>
-        </div>
+          <BotaoEnviar onClick={this.adicionaMsg}>Enviar</BotaoEnviar>
+        </ContainerInputs>
       </div>
     );
   }
