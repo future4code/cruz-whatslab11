@@ -50,21 +50,7 @@ class App extends React.Component{
     });
     return (
       <div className={'whats-container'}>
-        <div>
-          <input
-          value={this.state.valorInputUsuario}
-          onChange={this.onChangeInputUsuario}
-          placeholder={"Nome Usuário"}
-          />
-
-          <input
-          value={this.state.valorInputMsg}
-          onChange={this.onChangeInputMsg}
-          placeholder={'Mensagem'}
-          />
-
-          <button onClick={this.adicionaMsg}>Enviar</button>
-        </div>        
+        {listaDeMsg}
       </div>
     );
   }
