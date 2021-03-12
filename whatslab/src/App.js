@@ -1,9 +1,7 @@
 import './App.css';
 import React from 'react';
-import CampoEnviarMensagem from './componentes/CampoEnviarMensagem';
-import Mensagem from './componentes/Mensagem';
 
-class App extends React.Component{
+class App extends React.Component {
   state = {
     mensagens: [
       {
@@ -17,15 +15,14 @@ class App extends React.Component{
 
   adicionaMsg = () => {
     const novaMsg = {
-      nome: this.state.valorInputUsuario,
-      mensagem: this.state.valorInputMsg
+      nomeUsuario: this.state.valorInputUsuario,
+      msgUsuario: this.state.valorInputMsg
     };
-  
 
     const novaLista = [...this.state.mensagens, novaMsg];
 
-    this.setState ({
-      mensagens: novaMsg,
+    this.setState({
+      mensagens: novaLista,
       valorInputUsuario: "",
       valorInputMsg: ""
     });
@@ -42,29 +39,25 @@ class App extends React.Component{
   render() {
     const listaDeMsg = this.state.mensagens.map((msg) => {
       return (
-        <CampoEnviarMensagem
-          nomeUsuario={msg.nomeUsuario}
-          msgUsuario={msg.msgUsuario}
-        />
+        <p>
+          <b>{msg.nomeUsuario}:</b> {msg.msgUsuario}
+        </p>
       );
     });
+
     return (
       <div className={'whats-container'}>
         <div>
-          <input
-          value={this.state.valorInputUsuario}
-          onChange={this.onChangeInputUsuario}
-          placeholder={"Nome Usuário"}
-          />
+         
+        {listaDeMsg}
+        </div>
+        <div>
+          <input placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
 
-          <input
-          value={this.state.valorInputMsg}
-          onChange={this.onChangeInputMsg}
-          placeholder={'Mensagem'}
-          />
+          <input placeholder='Mensagem' onChange={this.onChangeInputMsg} value={this.valorInputMsg} />
 
           <button onClick={this.adicionaMsg}>Enviar</button>
-        </div>        
+        </div>
       </div>
     );
   }
