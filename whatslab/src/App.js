@@ -1,5 +1,21 @@
 import './App.css';
 import React from 'react';
+import styled from "styled-components";
+
+const ContainerMensagens = styled.div`
+  height: 90vh;
+  border: 2px solid red;
+  padding: 5px;
+`
+const InputUsuario = styled.input`
+  
+`
+const InputMsg = styled.input`
+  
+`
+const BotaoEnviar = styled.button`
+  
+`
 
 class App extends React.Component {
   state = {
@@ -38,18 +54,20 @@ class App extends React.Component {
 
   render() {
     const listaDeMsg = this.state.mensagens.map((msg) => {
-      return (
-        <p>
-          <b>{msg.nomeUsuario}:</b> {msg.msgUsuario}
-        </p>
-      );
+      if ((msg.msgUsuario !== "") && (msg.msgUsuario !== "")) {
+        return (
+          <p>
+            <b>{msg.nomeUsuario}:</b> {msg.msgUsuario}
+          </p>
+        );
+      }
     });
 
     return (
       <div className={'whats-container'}>
-        <div>
+        <ContainerMensagens>
         {listaDeMsg}
-        </div>
+        </ContainerMensagens>
         <div>
           <input placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
 
@@ -57,6 +75,7 @@ class App extends React.Component {
 
           <button onClick={this.adicionaMsg}>Enviar</button>
         </div>
+      </div>
     );
   }
 }
