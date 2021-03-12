@@ -51,12 +51,12 @@ class App extends React.Component{
     return (
       <div className={'whats-container'}>
       <div>
-        <button onClick={this.adicionaMsg}></button>;
+        <button onClick={this.adicionaMsg}></button>; 
       </div>
         {listaDeMsg}
       </div>
     );
   }
-}
+} //TESTE
 
 export default App;
