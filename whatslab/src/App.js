@@ -1,7 +1,11 @@
 import './App.css';
 import React from 'react';
 import styled from "styled-components";
+import Mensagens from './components/Mensagens';
 
+const ContainerWhats = styled.div`
+  background-color: #FFFFFF;
+`
 const ContainerMensagens = styled.div`
   height: 70vh;
   width: 30vw;
@@ -38,7 +42,9 @@ const BotaoEnviar = styled.button`
   background-color: #f66800;
   color: #ffffff;
 `
-
+const MensagemEu = styled.div`
+  background-color: #DDF7C8;
+`
 
 class App extends React.Component {
   state = {
@@ -77,7 +83,7 @@ class App extends React.Component {
 
   onChangeInputUsuario = (event) => {
     this.setState({ valorInputUsuario: event.target.value });
-  };
+  }; 
 
   onChangeInputMsg = (event) => {
     this.setState({ valorInputMsg: event.target.value });
@@ -93,23 +99,40 @@ class App extends React.Component {
 
     this.setState({ mensagens: novaLista })
   }
+  
 
   render() {
     const listaDeMsg = this.state.mensagens.map((msg) => {
-      if ((msg.msgUsuario !== "") && (msg.msgUsuario !== "")) {
-        return (
-          <div onDoubleClick={() => this.duploClick(msg.msgUsuario)}>
-            <b>{msg.nomeUsuario}:</b> {msg.msgUsuario}
-          </div>
-        );
+      if ((msg.nomeUsuario !== "") && (msg.msgUsuario !== "")) {
+        const nome = msg.nomeUsuario.toLowerCase()
+        if (nome === 'eu') {
+          return (
+            <MensagemEu onDoubleClick={() => this.duploClick(msg.conteudo)}>
+              <Mensagens 
+                msgUsuario={msg.msgUsuario}
+              />
+            </MensagemEu>
+          );
+        } else {
+          return (
+            <div onDoubleClick={() => this.duploClick(msg.conteudo)}>
+              <Mensagens
+                nomeUsuario={msg.nomeUsuario}
+                doisPontos={':'}
+                msgUsuario={msg.msgUsuario}
+              />
+            </div>
+          );
+        }
       }
     });
-
+    
     return (
-      <div className={'whats-container'}>
+      <ContainerWhats>
         <ContainerMensagens>
           {listaDeMsg}
         </ContainerMensagens>
+        
         <ContainerInputs>
           <InputUsuario placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
 
@@ -117,9 +140,9 @@ class App extends React.Component {
 
           <BotaoEnviar onClick={this.adicionaMsg}>Enviar</BotaoEnviar>
         </ContainerInputs>
-      </div>
+      </ContainerWhats>
     );
-  }
-}
+  };
+};
 
 export default App;
