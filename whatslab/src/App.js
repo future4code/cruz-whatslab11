@@ -82,11 +82,20 @@ class App extends React.Component {
     this.setState({ valorInputMsg: event.target.value });
   };
 
+  duploClick = (conteudo) => {
+    const novaLista = [...this.state.mensagens]
+    const mensagemApagada = novaLista.filter((msg) => {
+      return msg.msgUsuario !== conteudo
+    })
+
+    this.setState({mensage: mensagemApagada})
+  }
+
   render() {
     const listaDeMsg = this.state.mensagens.map((msg) => {
       if ((msg.msgUsuario !== "") && (msg.msgUsuario !== "")) {
         return (
-          <p>
+          <p ondblclick={this.duploClick}>
             <b>{msg.nomeUsuario}:</b> {msg.msgUsuario}
           </p>
         );
