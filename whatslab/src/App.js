@@ -7,6 +7,8 @@ const ContainerWhats = styled.div`
   background-color: #FFFFFF;
 `
 const ContainerMensagens = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 70vh;
   width: 30vw;
   border: 2px solid #5abeb1;
@@ -43,8 +45,16 @@ const BotaoEnviar = styled.button`
   color: #ffffff;
 `
 const MensagemEu = styled.div`
-  background-color: #DDF7C8;
-`
+  background-color: ${props => {
+      if(props.tipo === 'eu')  {
+        return '#DDF7CB'
+      } else if (props.tipo === 'outro'){
+        return '#FFFFFF';
+      }
+    }
+  };
+  align-self: flex-end;
+  `
 
 class App extends React.Component {
   state = {
@@ -107,7 +117,7 @@ class App extends React.Component {
         const nome = msg.nomeUsuario.toLowerCase()
         if (nome === 'eu') {
           return (
-            <MensagemEu onDoubleClick={() => this.duploClick(msg.conteudo)}>
+            <MensagemEu tipo={"eu"}  onDoubleClick={() => this.duploClick(msg.conteudo)}>
               <Mensagens 
                 msgUsuario={msg.msgUsuario}
               />
