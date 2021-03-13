@@ -50,13 +50,14 @@ class App extends React.Component {
     valorInputUsuario: "",
     valorInputMsg: ""
   }
-
+  
   adicionaMsg = () => {
     const novaMsg = {
       nomeUsuario: this.state.valorInputUsuario,
       msgUsuario: this.state.valorInputMsg
     };
 
+   
     const novaLista = [...this.state.mensagens, novaMsg];
 
     this.setState({
@@ -65,6 +66,13 @@ class App extends React.Component {
       valorInputMsg: ""
     });
   };
+  
+  
+  keyPressAddMsg = (event) => {
+    if(event.key === 'Enter') {
+      this.adicionaMsg();
+    }
+  }
 
   onChangeInputUsuario = (event) => {
     this.setState({ valorInputUsuario: event.target.value });
@@ -93,7 +101,7 @@ class App extends React.Component {
         <ContainerInputs>
           <InputUsuario placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
 
-          <InputMsg placeholder='Mensagem' onChange={this.onChangeInputMsg} value={this.state.valorInputMsg} />
+          <InputMsg placeholder='Mensagem' onKeyUp={this.keyPressAddMsg} onChange={this.onChangeInputMsg} value={this.state.valorInputMsg} />
 
           <BotaoEnviar onClick={this.adicionaMsg}>Enviar</BotaoEnviar>
         </ContainerInputs>
