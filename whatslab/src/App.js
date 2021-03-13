@@ -39,6 +39,7 @@ const BotaoEnviar = styled.button`
   color: #ffffff;
 `
 
+
 class App extends React.Component {
   state = {
     mensagens: [
@@ -50,14 +51,14 @@ class App extends React.Component {
     valorInputUsuario: "",
     valorInputMsg: ""
   }
-  
+
   adicionaMsg = () => {
     const novaMsg = {
       nomeUsuario: this.state.valorInputUsuario,
       msgUsuario: this.state.valorInputMsg
     };
 
-   
+
     const novaLista = [...this.state.mensagens, novaMsg];
 
     this.setState({
@@ -66,10 +67,10 @@ class App extends React.Component {
       valorInputMsg: ""
     });
   };
-  
-  
+
+
   keyPressAddMsg = (event) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
       this.adicionaMsg();
     }
   }
@@ -82,13 +83,24 @@ class App extends React.Component {
     this.setState({ valorInputMsg: event.target.value });
   };
 
+  duploClick = (conteudo) => {
+    const novaLista = [...this.state.mensagens]
+    const indexMensagem = novaLista.findIndex((msg) => {
+      return msg.msgUsuario === conteudo
+    })
+
+    novaLista.splice(indexMensagem, 1)
+
+    this.setState({ mensagens: novaLista })
+  }
+
   render() {
     const listaDeMsg = this.state.mensagens.map((msg) => {
       if ((msg.msgUsuario !== "") && (msg.msgUsuario !== "")) {
         return (
-          <p>
+          <div onDoubleClick={() => this.duploClick(msg.msgUsuario)}>
             <b>{msg.nomeUsuario}:</b> {msg.msgUsuario}
-          </p>
+          </div>
         );
       }
     });
@@ -96,7 +108,7 @@ class App extends React.Component {
     return (
       <div className={'whats-container'}>
         <ContainerMensagens>
-        {listaDeMsg}
+          {listaDeMsg}
         </ContainerMensagens>
         <ContainerInputs>
           <InputUsuario placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
