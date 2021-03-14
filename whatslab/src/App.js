@@ -8,20 +8,34 @@ const ContainerWhats = styled.div`
 `
 const ContainerMensagens = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse; //Pra começar de baixo pra cima
+
+  max-width: 40vh;
+  min-width: 30vh;
   height: 70vh;
-  width: 30vw;
   border: 2px solid #5abeb1;
   border-radius: 5px;
   padding: 5px;
   margin: auto;
   margin-top: 20px;
+
+  overflow-y: auto; //Liberar a rolagem caso tenha muitas mensagens
+
 `
+
+//Fiz outra div pra ela não ficar pequena quando não tiver msg
+const DivMensagens = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 const ContainerInputs = styled.div`
   display: flex;
   justify-content: center;
   margin: auto;
-  width: 31vw;
+
+  max-width: 40vh;
+  min-width: 30vh;
 `
 
 const InputUsuario = styled.input`
@@ -44,18 +58,30 @@ const BotaoEnviar = styled.button`
   background-color: #f66800;
   color: #ffffff;
 `
-const MensagemEu = styled.div`
-  background-color: ${props => {
-      if(props.tipo === 'eu')  {
-        return '#DDF7CB'
-      } else if (props.tipo === 'outro'){
-        return '#FFFFFF';
-      }
-    }
-  };
-  align-self: flex-end;
-  `
 
+//Criei uma estilazação que é o que tem em comum nas mensagens dos 'outros' e do 'eu'
+const EstiloMensagens = styled.div`
+  border-radius: 3px;  
+  box-shadow: 1.2px 1.2px 5px gray;
+
+  margin: 0.1rem 0.2rem;
+  padding: 0.2rem 0.5rem;
+  max-width: 60%;
+  min-width: 10%;
+  word-wrap: break-word;
+
+  font-weight: 450;
+  line-height: 1.3;
+`
+//Tirei o if pq não estava usando o else, e coloquei algumas estilizações nos dois 
+const MensagemEu = styled(EstiloMensagens)`
+  background-color: #DDF7CB;
+  align-self: flex-end;
+`
+const MensagemOutro = styled(EstiloMensagens)`
+  background-color: #f0f2f5;
+  align-self: flex-start;
+`
 class App extends React.Component {
   state = {
     mensagens: [
@@ -93,7 +119,7 @@ class App extends React.Component {
 
   onChangeInputUsuario = (event) => {
     this.setState({ valorInputUsuario: event.target.value });
-  }; 
+  };
 
   onChangeInputMsg = (event) => {
     this.setState({ valorInputMsg: event.target.value });
@@ -101,6 +127,7 @@ class App extends React.Component {
 
   duploClick = (conteudo) => {
     const novaLista = [...this.state.mensagens]
+
     const indexMensagem = novaLista.findIndex((msg) => {
       return msg.msgUsuario === conteudo
     })
@@ -109,7 +136,7 @@ class App extends React.Component {
 
     this.setState({ mensagens: novaLista })
   }
-  
+
 
   render() {
     const listaDeMsg = this.state.mensagens.map((msg) => {
@@ -117,32 +144,33 @@ class App extends React.Component {
         const nome = msg.nomeUsuario.toLowerCase()
         if (nome === 'eu') {
           return (
-            <MensagemEu tipo={"eu"}  onDoubleClick={() => this.duploClick(msg.conteudo)}>
-              <Mensagens 
+            <MensagemEu onDoubleClick={() => this.duploClick(msg.conteudo)}>
+              <Mensagens
                 msgUsuario={msg.msgUsuario}
               />
             </MensagemEu>
           );
         } else {
           return (
-            <div onDoubleClick={() => this.duploClick(msg.conteudo)}>
+            <MensagemOutro onDoubleClick={() => this.duploClick(msg.conteudo)}>
               <Mensagens
                 nomeUsuario={msg.nomeUsuario}
-                doisPontos={':'}
                 msgUsuario={msg.msgUsuario}
               />
-            </div>
+            </MensagemOutro>
           );
         }
       }
     });
-    
+
     return (
       <ContainerWhats>
         <ContainerMensagens>
-          {listaDeMsg}
+          <DivMensagens>
+            {listaDeMsg}
+          </DivMensagens>
         </ContainerMensagens>
-        
+
         <ContainerInputs>
           <InputUsuario placeholder='Nome' onChange={this.onChangeInputUsuario} value={this.state.valorInputUsuario} />
 
