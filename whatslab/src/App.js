@@ -8,7 +8,7 @@ const ContainerWhats = styled.div`
   flex-direction: column;
   background-color: #FFFFFF;
   border-radius: 5px;
-  max-width: 50vw;
+  max-width: 80vw;
   min-width: 20vw;
   margin: auto;
   margin-top: 40px;
@@ -67,7 +67,7 @@ const BotaoEnviar = styled.button`
   border-radius: 5px;
   background-color: #F66800;
   color: #FFFFFF;
-  min-width: 8vw;
+  min-width: 18%;
 `
 
 //Criei uma estilazação que é o que tem em comum nas mensagens dos 'outros' e do 'eu'
@@ -82,7 +82,7 @@ const EstiloMensagens = styled.div`
   min-width: 10%;
   word-wrap: break-word;
 
-  font-weight: 450;
+  font-weight: 400;
   line-height: 1.3;
   position: relative;
 `
@@ -97,7 +97,7 @@ const MensagemEu = styled(EstiloMensagens)`
     position: absolute;
     top: 0px;
     right: -8px;
-  }
+  };
 `
 const MensagemOutro = styled(EstiloMensagens)`
   background-color: #F0F2F5;
@@ -110,7 +110,7 @@ const MensagemOutro = styled(EstiloMensagens)`
     position: absolute;
     top: 0px;
     left: -8px;
-  }
+  };
 `
 class App extends React.Component {
   state = {
@@ -122,7 +122,7 @@ class App extends React.Component {
     ],
     valorInputUsuario: "",
     valorInputMsg: ""
-  }
+  };
 
   adicionaMsg = () => {
     const novaMsg = {
@@ -140,12 +140,11 @@ class App extends React.Component {
     });
   };
 
-
   keyPressAddMsg = (event) => {
     if (event.key === 'Enter') {
-      this.adicionaMsg();
-    }
-  }
+      this.adicionaMsg()
+    };
+  };
 
   onChangeInputUsuario = (event) => {
     this.setState({ valorInputUsuario: event.target.value });
@@ -156,16 +155,16 @@ class App extends React.Component {
   };
 
   duploClick = (conteudo) => {
-    const novaLista = [...this.state.mensagens]
+    const novaLista = [...this.state.mensagens];
 
     const indexMensagem = novaLista.findIndex((msg) => {
       return msg.msgUsuario === conteudo
-    })
+    });
 
     novaLista.splice(indexMensagem, 1)
 
     this.setState({ mensagens: novaLista })
-  }
+  };
 
 
   render() {
@@ -189,8 +188,8 @@ class App extends React.Component {
               />
             </MensagemOutro>
           );
-        }
-      }
+        };
+      };
     });
 
     return (
