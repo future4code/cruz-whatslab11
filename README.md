@@ -28,5 +28,5 @@ Projeto de WhatsApp, feito como prática dos conhecimento adquiridos no decorrer
     <td align="center"><a href="https://https://github.com/adryanefernandes">
     <img src="https://avatars.githubusercontent.com/u/76170319?s=460&u=c79a37b29d25709e380c64ae9d9432b35f72638e&v=4" width="100px;" alt="Imagem do perfil da Adryane"/>
     <br />
-    <sub><b>Adryane Fernandes</b></sub></a><br /><span></span>:star::blue_heart::milk_way:<p></p></td>
+    <sub><b>Adryane Fernandes</b></sub></a><br /><span></span>:star::blue_heart::milky_way:<p></p></td>
 </table>
