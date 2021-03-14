@@ -29,12 +29,12 @@ const DivMensagens = styled.div`
   flex-direction: column;
 `
 
+// Diminuí o max-width para manter as proporções on
 const ContainerInputs = styled.div`
   display: flex;
   justify-content: center;
   margin: auto;
-
-  max-width: 40vh;
+  max-width: 13vw;
   min-width: 30vh;
 `
 
@@ -42,14 +42,14 @@ const InputUsuario = styled.input`
   border: none;
   background-color: #f9eac3;
   padding: 5px;
-  width: 26%;
+  max-width: 26%;
   height: 22px;
   border-radius: 5px;
 `
 const InputMsg = styled.input`
   border: none;
   background-color: #f9eac3;
-  width: 80%;
+  max-width: 80%;
   border-radius: 5px;
 `
 const BotaoEnviar = styled.button`
