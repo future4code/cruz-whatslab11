@@ -12,6 +12,8 @@ const ContainerWhats = styled.div`
   min-width: 20vw;
   margin: auto;
   margin-top: 40px;
+
+  // Background image nova aqui
   background-image: url("https://i.pinimg.com/originals/e9/08/a5/e908a5bd5add462362faedb5e0502354.webp");
 `
 const ContainerMensagens = styled.div`
@@ -42,10 +44,10 @@ const ContainerInputs = styled.div`
   padding: 5px;
   box-sizing: border-box;
 `
-
+// Margens direita adicionadas aos inputs
 const InputUsuario = styled.input`
   border: none;
-  background-color: #f9eac3;
+  background-color: #FFFFFF;
   padding: 5px;
   margin-right: 4px;
   max-width: 20%;
@@ -54,7 +56,7 @@ const InputUsuario = styled.input`
 `
 const InputMsg = styled.input`
   border: none;
-  background-color: #f9eac3;
+  background-color: #FFFFFF;
   width: 80%;
   border-radius: 5px;
   margin-right: 4px;  
@@ -63,8 +65,8 @@ const InputMsg = styled.input`
 const BotaoEnviar = styled.button`
   border: none;
   border-radius: 5px;
-  background-color: #f66800;
-  color: #ffffff;
+  background-color: #F66800;
+  color: #FFFFFF;
   min-width: 8vw;
 `
 
@@ -75,22 +77,40 @@ const EstiloMensagens = styled.div`
 
   // Aumentei um pouco o margin de 0.1rem para 0.3rem para criar margem entre os balões.
   margin: 0.3rem 0.2rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.9rem;
   max-width: 60%;
   min-width: 10%;
   word-wrap: break-word;
 
   font-weight: 450;
   line-height: 1.3;
+  position: relative;
 `
 //Tirei o if pq não estava usando o else, e coloquei algumas estilizações nos dois 
 const MensagemEu = styled(EstiloMensagens)`
   background-color: #DDF7CB;
   align-self: flex-end;
+  &:after {
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #DDF7CB;
+    position: absolute;
+    top: 0px;
+    right: -8px;
+  }
 `
 const MensagemOutro = styled(EstiloMensagens)`
-  background-color: #f0f2f5;
+  background-color: #F0F2F5;
   align-self: flex-start;
+  margin-left: 10px;
+  &:before {
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #F0F2F5;
+    position: absolute;
+    top: 0px;
+    left: -8px;
+  }
 `
 class App extends React.Component {
   state = {
