@@ -64,7 +64,8 @@ const EstiloMensagens = styled.div`
   border-radius: 3px;  
   box-shadow: 1.2px 1.2px 5px gray;
 
-  margin: 0.1rem 0.2rem;
+  // Aumentei um pouco o margin de 0.1rem para 0.4rem para criar margem entre os balões.
+  margin: 0.4rem 0.2rem;
   padding: 0.2rem 0.5rem;
   max-width: 60%;
   min-width: 10%;
