@@ -4,59 +4,70 @@ import styled from "styled-components";
 import Mensagens from './components/Mensagens';
 
 const ContainerWhats = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: #FFFFFF;
+  border-radius: 5px;
+  max-width: 50vw;
+  min-width: 20vw;
+  margin: auto;
+  margin-top: 40px;
+
+  // Background image nova aqui
+  background-image: url("https://i.pinimg.com/originals/e9/08/a5/e908a5bd5add462362faedb5e0502354.webp");
 `
 const ContainerMensagens = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column-reverse; //Pra começar de baixo pra cima
-
-  max-width: 40vh;
-  min-width: 30vh;
   height: 70vh;
-  border: 2px solid #5abeb1;
   border-radius: 5px;
   padding: 5px;
   margin: auto;
-  margin-top: 20px;
-
+  width: 100%;
   overflow-y: auto; //Liberar a rolagem caso tenha muitas mensagens
-
 `
 
 //Fiz outra div pra ela não ficar pequena quando não tiver msg
 const DivMensagens = styled.div`
   display: flex;
   flex-direction: column;
+  margin-right: 10px;
 `
 
+// Diminui o max-width para manter as proporções do inputs independente do tamanho da tela.
 const ContainerInputs = styled.div`
   display: flex;
   justify-content: center;
   margin: auto;
-
-  max-width: 40vh;
-  min-width: 30vh;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
 `
-
+// Margens direita adicionadas aos inputs
 const InputUsuario = styled.input`
   border: none;
-  background-color: #f9eac3;
+  background-color: #FFFFFF;
   padding: 5px;
-  width: 26%;
-  height: 22px;
-  border-radius: 5px;
+  margin-right: 4px;
+  max-width: 20%;
+  height: 20px;
+  border-radius: 3px;
 `
 const InputMsg = styled.input`
   border: none;
-  background-color: #f9eac3;
+  background-color: #FFFFFF;
   width: 80%;
   border-radius: 5px;
+  margin-right: 4px;  
+  padding: 6px;
 `
 const BotaoEnviar = styled.button`
   border: none;
   border-radius: 5px;
-  background-color: #f66800;
-  color: #ffffff;
+  background-color: #F66800;
+  color: #FFFFFF;
+  min-width: 8vw;
 `
 
 //Criei uma estilazação que é o que tem em comum nas mensagens dos 'outros' e do 'eu'
@@ -64,23 +75,42 @@ const EstiloMensagens = styled.div`
   border-radius: 3px;  
   box-shadow: 1.2px 1.2px 5px gray;
 
-  margin: 0.1rem 0.2rem;
-  padding: 0.2rem 0.5rem;
+  // Aumentei um pouco o margin de 0.1rem para 0.3rem para criar margem entre os balões.
+  margin: 0.3rem 0.2rem;
+  padding: 0.2rem 0.9rem;
   max-width: 60%;
   min-width: 10%;
   word-wrap: break-word;
 
   font-weight: 450;
   line-height: 1.3;
+  position: relative;
 `
 //Tirei o if pq não estava usando o else, e coloquei algumas estilizações nos dois 
 const MensagemEu = styled(EstiloMensagens)`
   background-color: #DDF7CB;
   align-self: flex-end;
+  &:after {
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #DDF7CB;
+    position: absolute;
+    top: 0px;
+    right: -8px;
+  }
 `
 const MensagemOutro = styled(EstiloMensagens)`
-  background-color: #f0f2f5;
+  background-color: #F0F2F5;
   align-self: flex-start;
+  margin-left: 10px;
+  &:before {
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #F0F2F5;
+    position: absolute;
+    top: 0px;
+    left: -8px;
+  }
 `
 class App extends React.Component {
   state = {
