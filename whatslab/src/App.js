@@ -13,29 +13,26 @@ const ContainerWhats = styled.div`
   margin: auto;
   margin-top: 40px;
 
-  // Background image nova aqui
   background-image: url("https://i.pinimg.com/originals/e9/08/a5/e908a5bd5add462362faedb5e0502354.webp");
 `
 const ContainerMensagens = styled.div`
   box-sizing: border-box;
   display: flex;
-  flex-direction: column-reverse; //Pra começar de baixo pra cima
+  flex-direction: column-reverse; 
   height: 70vh;
   border-radius: 5px;
   padding: 5px;
   margin: auto;
   width: 100%;
-  overflow-y: auto; //Liberar a rolagem caso tenha muitas mensagens
+  overflow-y: auto; 
 `
 
-//Fiz outra div pra ela não ficar pequena quando não tiver msg
 const DivMensagens = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 10px;
 `
 
-// Diminui o max-width para manter as proporções do inputs independente do tamanho da tela.
 const ContainerInputs = styled.div`
   display: flex;
   justify-content: center;
@@ -44,7 +41,6 @@ const ContainerInputs = styled.div`
   padding: 5px;
   box-sizing: border-box;
 `
-// Margens direita adicionadas aos inputs
 const InputUsuario = styled.input`
   border: none;
   background-color: #FFFFFF;
@@ -70,12 +66,10 @@ const BotaoEnviar = styled.button`
   min-width: 18%;
 `
 
-//Criei uma estilazação que é o que tem em comum nas mensagens dos 'outros' e do 'eu'
 const EstiloMensagens = styled.div`
   border-radius: 3px;  
   box-shadow: 1.2px 1.2px 5px gray;
 
-  // Aumentei um pouco o margin de 0.1rem para 0.3rem para criar margem entre os balões.
   margin: 0.3rem 0.2rem;
   padding: 0.2rem 0.9rem;
   max-width: 60%;
@@ -86,7 +80,6 @@ const EstiloMensagens = styled.div`
   line-height: 1.3;
   position: relative;
 `
-//Tirei o if pq não estava usando o else, e coloquei algumas estilizações nos dois 
 const MensagemEu = styled(EstiloMensagens)`
   background-color: #DDF7CB;
   align-self: flex-end;
@@ -133,6 +126,7 @@ class App extends React.Component {
 
     const novaLista = [...this.state.mensagens, novaMsg];
 
+
     this.setState({
       mensagens: novaLista,
       valorInputUsuario: "",
@@ -162,7 +156,6 @@ class App extends React.Component {
     });
 
     novaLista.splice(indexMensagem, 1)
-
     this.setState({ mensagens: novaLista })
   };
 
@@ -173,7 +166,7 @@ class App extends React.Component {
         const nome = msg.nomeUsuario.toLowerCase()
         if (nome === 'eu') {
           return (
-            <MensagemEu onDoubleClick={() => this.duploClick(msg.conteudo)}>
+            <MensagemEu onDoubleClick={() => this.duploClick(msg.msgUsuario)}>
               <Mensagens
                 msgUsuario={msg.msgUsuario}
               />
@@ -181,7 +174,7 @@ class App extends React.Component {
           );
         } else {
           return (
-            <MensagemOutro onDoubleClick={() => this.duploClick(msg.conteudo)}>
+            <MensagemOutro onDoubleClick={() => this.duploClick(msg.msgUsuario)}>
               <Mensagens
                 nomeUsuario={msg.nomeUsuario}
                 msgUsuario={msg.msgUsuario}
