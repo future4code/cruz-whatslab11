@@ -21,12 +21,12 @@ Projeto de WhatsApp, feito como prática dos conhecimento adquiridos no decorrer
 ## 🚀 Autoras
 <table>
   <tr>
-    <td align="center"><a href="https://https://github.com/alexa2me">
-    <img src="https://avatars.githubusercontent.com/u/63327969?s=460&v=4" width="100px;" alt="Imagem do perfil da Alexandra"/>
+    <td align="center"><a href="https://github.com/alexa2me">
+    <img src="https://avatars.githubusercontent.com/u/63327969?s=460&v=4" width="100px" alt="Imagem do perfil da Alexandra"/>
     <br />
-    <sub><b>Alexandra Alcantara</b></sub></a><br /><span></span>:snowflake::snowman::snowflake:</td>
-    <td align="center"><a href="https://https://github.com/adryanefernandes">
-    <img src="https://avatars.githubusercontent.com/u/76170319?s=460&u=c79a37b29d25709e380c64ae9d9432b35f72638e&v=4" width="100px;" alt="Imagem do perfil da Adryane"/>
+    <sub><b>Alexandra Alcantara</b></sub><br />:snowflake::snowman::snowflake:</td>
+    <td align="center"><a href="https://github.com/adryanefernandes">
+    <img src="https://avatars.githubusercontent.com/u/76170319?s=460&u=c79a37b29d25709e380c64ae9d9432b35f72638e&v=4" width="100px" alt="Imagem do perfil da Adryane"/>
     <br />
-    <sub><b>Adryane Fernandes</b></sub></a><br /><span></span>:star::blue_heart::milky_way:</td>
+    <sub><b>Adryane Fernandes</b></sub><br />:star::blue_heart::milky_way:</td>
 </table>
