@@ -6,7 +6,7 @@ Projeto de WhatsApp, feito como prática dos conhecimento adquiridos no decorrer
 
 - [x] Imagem de background semelhante ao WhatsApp;
 - [x] Campos de input de usuário e mensagem;
-- [x] Para o usuário "eu" o nome não pe exibido e o balão fica posicionado à direita;
+- [x] Para o usuário "eu" o nome não é exibido e o balão fica posicionado à direita;
 - [x] Para qualquer outro nome de usuário, o nome é exibido acima da mensagem com o balão posicionado à esquerda;
 - [x] Botão para enviar as mensagens;
 - [x] A função de enviar também funciona somente clicando na tecla "Enter";
